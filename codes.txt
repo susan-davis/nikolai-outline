@@ -1,0 +1,35 @@
+Nikolai Grozny state key:
+
+[looks like it needs the through-line for at least 5 modules to design]
+
+Current PC (4 bits)
+
+Module ID and outcome for each act: 8 each (4 module, 4 outcome), total 32-40
+
+Status of 13 major characters:
+
+Anya, Nikolai, Oksana, Vasily, Sander, Pyotr, Millie, Thalberg, Harada,
+Gennady, Irina, Olga, Ruslan, Huseyin
+
+alive/dead
+allegiance
+
+Relationship flags between ZZ major characters (2 bits each, total xxx bits)
+
+Additional status for Anastasia:
+
+Additional status for Nikolai:
+
+Status of YY minor characters:
+
+Event flags:
+
+Checksum and validity bits:
+
+TOTAL: XXX BITS
+
+
+Encoding: 
+
+6-bit = 0-9, a-z, A-Z, -+, case sensitive, for 6 bits per character
+Maximum key length: 38 characters, for a total of 228 bits. Allow longer key?

@@ -1,0 +1,981 @@
+%% Outline view of Nikolai Grozny series.
+
+(story author)	Susan Davis
+(story title)	Nikolai Grozny Master Outline
+(story noun)	Specification and testing tool for the game Nikolai Grozny
+(story release 1)
+(story ifid)	4F932440-73EF-481D-9CBD-8517558F6D81
+
+(global variable (act 1))
+(global variable (scene 1))
+
+(next scene)	(scene $Scene)
+      		($Scene plus 1 into $S)
+      		(now) (scene $S)
+		(summarize #anya)
+
+(next act)	(act $Act)
+      		($Act plus 1 into $A)
+      		(now) (act $A)
+		(now) (scene 1)
+
+(status headline)
+		(current player $Player)
+		(name $Player)
+
+(roman capital 1)	I
+(roman capital 2)	II
+(roman capital 3)	III
+(roman capital 4)	IV
+(roman capital 5)	V
+(roman numeral 0)	
+(roman numeral 1)	i
+(roman numeral 2)	ii
+(roman numeral 3)	iii
+(roman numeral 4)	iv
+(roman numeral 5)	v
+(roman numeral 6)	vi
+(roman numeral 7)	vii
+(roman numeral 8)	viii
+(roman numeral 9)	ix
+(roman numeral 10)	x
+(roman numeral 20)	xx
+(roman numeral 30)	xxx
+(roman numeral 40)	xl
+(roman numeral 50)	l
+(roman numeral 60)	lx
+(roman numeral 70)	lxx
+(roman numeral 80)	lxxx
+(roman numeral 90)	xc
+(roman numeral $N)	($N divided by 10 into $Tens)
+			($N modulo 10 into $Ones)
+			(roman numeral $Tens) (roman numeral $Ones)
+
+(score headline)
+		(div @score) {
+		    (act $Act) (scene $Scene)
+       		    Act (roman capital $Act), scene (roman numeral $Scene)
+		}
+
+%% -------------------- Helpful routines --------------------
+
+(spouse name)	(current player $Player)
+ 		($Player is married to $Spouse)
+		(name $Spouse)
+
+(spouse title)	(current player $Player)
+ 		($Player is married to $Spouse)
+		(title $Spouse)
+
+(spouse family)	(current player $Player)
+ 		($Player is married to $Spouse)
+		(family name $Spouse)
+
+%% Stats range from 0 to 3. Really, they range from -1 to 2, but Dialog
+%% doesn't (yet?) have signed integers to work with. 
+
+(increase status by $Value)
+		(nikolai status is $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) (nikolai status is $T)
+
+(decrease status by $Value)
+		(nikolai status is $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) (nikolai status is $T)
+		(if) ($T < 0) (then)
+		     (now) (#nikolai hates #anya)
+		(endif)
+
+(increase respect by $Value)
+		(nikolai respect is $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) (nikolai respect is $T)
+		(if) ($T > 1) (then)
+		     (now) (#nikolai trusts #anya)
+		(endif)
+
+(decrease respect by $Value)
+		(nikolai respect is $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) (nikolai respect is $T)
+
+(increase will by $Value)
+		(current player $Player)
+		($Player will $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player will $T)
+
+(decrease will by $Value)
+		(current player $Player)
+		($Player will $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player will $T)
+
+(increase compassion by $Value)
+		(current player $Player)
+		($Player compassion $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player compassion $T)
+
+(decrease compassion by $Value)
+		(current player $Player)
+		($Player compassion $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player compassion $T)
+
+(increase fitness by $Value)
+		(current player $Player)
+		($Player fitness $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player fitness $T)
+
+(decrease fitness by $Value)
+		(current player $Player)
+		($Player fitness $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player fitness $T)
+
+(increase popularity by $Value)
+		(current player $Player)
+		($Player popularity $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player popularity $T)
+
+(decrease popularity by $Value)
+		(current player $Player)
+		($Player popularity $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player popularity $T)
+
+%% 0 == incompetent, 1 == professionally competent, 2 == expert,
+%% 3 == best in the world
+
+(increase skill by $Value)
+		(current player $Player)
+		($Player skill $Current)
+		($Current plus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player skill $T)
+
+(decrease skill by $Value)
+		(current player $Player)
+		($Player skill $Current)
+		($Current minus $Value into $Total)
+		(normalize $Total into $T)
+		(now) ($Player skill $T)
+
+(normalize $Total into $T)
+		(if) ($Total > 2) (then)
+		     ($T = 3)
+		(elseif) ($Total < 1) (then)
+		     ($T = 0)
+		(else)
+		     ($T = $Total)
+		(endif)
+
+(summarize $Character)
+		(title $Character) (name $Character) is
+		(if) (marriage status is #undefined) (then)
+		     unmarried.
+		(elseif) (marriage status is #happy) (then)
+		     happily married to (spouse title) (spouse name).
+		(elseif) (marriage status is #strained) (then)
+		     in an unhappy marriage with (spouse title) (spouse name).
+		(elseif) (marriage status is #broken) (then)
+		     divorced from (spouse title) (spouse name).
+		(endif)
+		(paramour is $Paramour)
+		(if) ($Character = #anya) (object $Paramour) (then)
+		     She is having an affair with (title $Paramour)
+		     (name $Paramour).
+		(endif)
+		(par)
+		($Character profession $Profession)
+		Profession: $Profession (line)
+		($Character skill $Skill)
+		Skill: $Skill (line)
+		($Character compassion $Compassion)
+		Compassion: $Compassion (line)
+		($Character will $Will)
+		Will: $Will (line)
+		($Character fitness $Fitness)
+		Fitness: $Fitness (line)
+		($Character popularity $Popularity)
+		Popularity: $Popularity
+
+
+%% -------------------- DRAMATIS PERSONAE --------------------
+
+%% Imperial Family
+
+#anya %% 1
+(current player *)
+(title *)	Princess
+(name *) 	Anastasia
+(nickname *)	Anya
+(family name *)	of Moscow
+(female *)
+(proper *)
+(* is alive)
+(* father #nikolai)
+(* mother #aiko)
+(* is married to #undefined)
+(* allegiance #nikolai)
+(* profession #undefined)
+(* fitness 1)
+(* compassion 1)
+(* will 1)
+(* popularity 1)
+(* skill 1)
+(* precedence 5)
+
+(* trusts #irina)
+(* trusts #olga)
+(* trusts #pyotr)
+(* trusts #millie)
+
+(global variable (marriage status is #undefined))
+(global variable (nikolai status is 1))
+(global variable (nikolai respect is 1))
+(global variable (exes []))
+(global variable (religion is #orthodox))
+(global variable (paramour is #undefined))
+
+#nikolai %% 2
+(title *)	Emperor
+(name *) 	Nikolai
+(family name *)	III, Tsar of all the Russias, and Sovereign of the Galaxy
+(male *)
+(proper *)
+(* is alive)
+(* allegiance #nikolai)
+(* is married to #oksana)
+(* fitness 2)
+(* will 3)
+(* compassion 0)
+(* popularity 3)
+(* skill 3)
+(* profession #military)
+(* precedence 1)
+
+(* trusts #oksana)
+(* trusts #sander)
+(* hates #olga)
+
+(global variable (empire-popularity 7))
+(global variable (public-outrage 0))
+
+#aiko
+(title *)	Empress
+(name *) 	Aiko
+(family name *)	Fujiwara
+(female *)
+(proper *)
+(* is dead)
+(* is married to #nikolai)
+(* precedence 2)
+
+#oksana %% 3
+(title *)	Empress
+(name *) 	Oksana
+(family name *)	of Novy Mir
+(female *)
+(proper *)
+(* is alive)
+(* allegiance #nikolai)
+(* is married to #nikolai)
+(* fitness 0)
+(* will 2)
+(* compassion 1)
+(* popularity 2)
+(* skill 3)
+(* profession #royal)
+(* precedence 3)
+
+(* hates #vasily)
+(* trusts #nikolai)
+(* trusts #sander)
+
+#vasily %% 4
+(title *)	Prince
+(name *)	Vasily
+(family name *)	of Sagittarius
+(male *)
+(proper *)
+(* is alive)
+(* father #nikolai)
+(* allegiance #vasily)
+(* fitness 2)
+(* will 2)
+(* compassion 0)
+(* popularity 1)
+(* skill 2)
+(* profession #military)
+(* precedence 8)
+
+(* hates #oksana)
+(* hates #sander)
+
+#sander %% 5
+(title *)	Prince
+(name *)	Aleksandr
+(nickname *)	Sander
+(family name *)	of Perseus
+(male *)
+(proper *)
+(* is alive)
+(* father #nikolai)
+(* mother #oksana)
+(* allegiance #nikolai)
+(* is married to #gudrun)
+(* fitness 1)
+(* will 2)
+(* compassion 2)
+(* popularity 2)
+(* skill 3)
+(* profession #military)
+(* precedence 4)
+
+(* trusts #nikolai)
+(* trusts #oksana)
+(* trusts #gudrun)
+(* hates #vasily)
+
+#pyotr %% 6
+(title *)	Prince
+(name *)	Pyotr
+(family name *)	of Orion
+(male *)
+(proper *)
+(* is alive)
+(* father #nikolai)
+(* mother #oksana)
+(* allegiance #nikolai)
+(* fitness 1)
+(* will 1)
+(* compassion 2)
+(* popularity 3)
+(* skill 1)
+(* profession #bohemian)
+(* precedence 6)
+
+(* trusts #anya)
+(* trusts #millie)
+
+#millie %% 7
+(title *)	Princess
+(name *)	Ludmilla
+(nickname *)	Millie
+(family name *)	of St. Petersburg
+(female *)
+(proper *)
+(* is alive)
+(* father #nikolai)
+(* mother #oksana)
+(* allegiance #nikolai) %% changes to #gennady
+(* is married to #gennady)
+(* fitness 0)
+(* will 1)
+(* compassion 3)
+(* popularity 2)
+(* skill 1)
+(* profession #royal)
+(* precedence 7)
+
+(* trusts #gennady)
+(* trusts #anya)
+(* trusts #pyotr)
+
+%% Anya's childhood friends
+
+#irina %% 8
+(title *)	Countess
+(name *)	Irina
+(female *)
+(proper *)
+(* is alive)
+(is married to #ruslan)
+(* allegiance #anya)
+(* fitness 0)
+(* will 1)
+(* compassion 3)
+(* popularity 1)
+(* skill 2)
+(* profession #courtier)
+
+(* trusts #anya)
+
+#olga %% 9
+(title *)	Countess
+(name *)	Olga
+(female *)
+(proper *)
+(* is alive)
+(* allegiance #anya)
+(* fitness 2)
+(* will 1)
+(* compassion 2)
+(* popularity 0)
+(* skill 3)
+(* profession #courtier)
+
+(* trusts #anya)
+
+#ruslan %% 10
+(title *)	Polkovnik
+(name *)	Ruslan
+(male *)
+(proper *)
+(* is alive)
+(* is married to #irina)
+(* allegiance #nikolai)
+(* fitness 3)
+(* will 1)
+(* compassion 1)
+(* popularity 1)
+(* skill 2)
+(* profession #military)
+
+(* trusts #irina)
+
+#gennady %% 11
+(title *)	Fleet Marshal
+(name *)	Gennady
+(family name *)	Voroshilov
+(male *)
+(proper *)
+(* is alive)
+(* is married to #millie)
+(* allegiance #gennady)
+(* fitness 2)
+(* will 3)
+(* compassion 0)
+(* popularity 2)
+(* skill 3)
+(* profession #military)
+
+(* hates #vasily)
+(* hates #sander)
+
+#huseyin %% 12
+(title *)	Prince
+(name *)	Huseyin
+(family name *)	Ozturk
+(male *)
+(proper *)
+(* is alive)
+(* allegiance #dai)
+(* fitness 1)
+(* will 2)
+(* compassion 2)
+(* popularity 2)
+(* skill 2)
+(* profession #royal)
+
+%% Imperial officials
+
+#harada %% 13
+(title *)	Grand Marshal
+(name *)	Ndiaye
+(family name *)	Harada
+(male *)
+(proper *)
+(* is alive)
+(* allegiance #nikolai)
+(* fitness 1)
+(* will 2)
+(* compassion 2)
+(* popularity 2)
+(* skill 2)
+(* profession #military)
+
+(* trusts #nikolai)
+(* trusts #anya)
+
+#thalberg %% 14
+(title *)	Grand Admiral
+(name *)	Olaf
+(family name *)	Thalberg
+(male *)
+(proper *)
+(* is alive)
+(* allegiance #thalberg)
+(* profession #military)
+(* skill 3)
+
+(* hates #nikolai)
+(* hates #oksana)
+(* hates #sander)
+
+#gudrun
+(title *)	Fleet Marshal
+(name *)	Gudrun
+(family name *)	Weinberg
+(female *)
+(proper *)
+(* is alive)
+(* is married to #sander)
+(* allegiance #sander)
+(* profession #military)
+(* skill 2)
+
+(* hates #vasily)
+(* trusts #sander)
+
+%% Bit players (can't be viewpoint character)
+
+#petrov
+(male *)
+(proper *)
+(* is alive)
+(* allegiance #nikolai)
+(* profession #diplomat)
+(* skill 2)
+
+%% -------------------- MODULE A: Anastasia --------------------
+
+(intro)		\[You begin play as (title #anya) (name #anya).\]
+		(par)
+		You arrive home to the Palace; Father has a big announcement
+      		later. You have some time to wander around before court.
+		(banner)
+		(activate node #module-a-start)
+
+%% -------------------- Scene 1: Palace --------------------
+
+#module-a-start
+(label *)	Start from Module A as Anastasia \(default\)
+(* flows to #wander-palace)
+
+#wander-palace
+(label *)	Wander the Palace
+(disp *)	You wander about the palace. Different objects and places
+      		and people trigger memories of your past.
+(* offers #remember-ball)
+		~(#remember-ball is exposed)
+(* offers #remember-university)
+		~(#remember-university is exposed)
+(* offers #remember-marriage)
+		~(#remember-marriage is exposed)
+(* offers #second-chance-at-love)
+		(marriage status is #broken)
+		~(#second-chance-at-love is exposed)
+(* offers #go-to-court)
+		(#remember-ball is exposed)
+		(#remember-university is exposed)
+		(#remember-marriage is exposed)
+
+%% -------------------- Scene 2: Senior Ball --------------------
+
+#remember-ball
+(label *)	Remember your Senior Ball at the Imperial Academy Gymnasium.
+(disp *)	Back then, the cool kids were the "ORG" trio of Oleg,
+      		Ruslan, and Gennady. You'd been friends with Oleg since
+		you both were toddlers. Your sister, Millie, had a huge
+		crush on Gennady, and you and your best friend Irina both
+		had your eyes on Ruslan.
+		(par)
+		Ruslan and Gennady both asked you to the dance, but your
+		father asked you to go with Prince Huseyin of the Dar
+		al-Islam "for the good of the Empire."
+(* offers #accept-ruslan)
+(* offers #accept-gennady)
+(* offers #accept-huseyin)
+(* offers #ask-oleg)
+(* offers #ask-irina)
+
+#ask-oleg
+(label *)	You asked Oleg to the ball.
+(disp *)	Oleg had been your close friend since you were both small
+      		children. You had never thought of him romantically, but
+		you were too good a friend to dash the romantic hopes of
+		either your sister or your best friend, and you couldn't
+		bear the thought of being a diplomatic pawn. But when you
+		laid eyes on him dressed up in his finery, that changed.
+		(par)
+		Guiltily, out of the corner of your eye, you noticed
+		Prince Huseyin, looking far more handsome than you expected.
+		And when you had a chance to chat with him during a lull,
+		he turned out to be quite charming.
+		(increase compassion by 1)
+(* offers #kiss-oleg)
+(* offers #kiss-huseyin)
+
+#accept-huseyin
+(label *)	You accepted Huseyin's invitation.
+(disp *)	You resented your father for interfering with something as
+      		important as your Senior Ball, but your resentment evaporated
+		as soon as you laid eyes on the charming Prince Huseyin.
+		The two of you were the talk of the ball, as Huseyin whirled
+		you expertly around the dance floor. And who but another
+		sovereign's heir would understand your life so well?
+		(par)
+		You introduced Huseyin to your friends, and had to catch
+		your breath at the sight of your childhood friend Oleg in
+		his finery. You had never thought of him romantically before
+		that very moment. Had you overlooked a true match all those
+		years?
+		(increase status by 1)
+(* offers #kiss-huseyin)
+(* offers #kiss-oleg)
+
+#accept-ruslan
+(label *)	You accepted Ruslan's invitation.
+(disp *)	Irina was excited for you -- or, at least, she pretended to
+      		be -- when you told her that the boy you'd both been drooling
+		over had asked you to the ball. The two of you cut quite a
+		dashing figure together, and Ruslan only had eyes for you.
+		(par)
+		To your surprise, Prince Huseyin, who your father tried to
+		make you take as a pity date, turned out to be quite a
+		hottie. Ruslan is the son of a mere knight, and you know
+		that your family won't consider him a suitable match. Did
+		you make the right call in coming with him?
+		(increase will by 1)
+(* offers #kiss-ruslan)
+(* offers #kiss-huseyin)
+
+#accept-gennady
+(label *)	You accepted Gennady's invitation.
+(disp *)	What self-respecting teenage girl would turn down an 
+      		invitation to the Senior Ball from the most popular boy
+		in school? \(Excluding those girls who aren't interested
+		in boys at all, of course... which is your father's actual
+		policy, come to think of it.\) Not you, that's for sure!
+		(par)
+		Halfway through a thoroughly excellent evening, Ruslan
+		cut in to dance with you. He was here with your best friend
+		Irina, but he let you know in no uncertain terms that his
+		primary interest was in you.
+		(increase popularity by 1)
+		(decrease compassion by 1)
+(* offers #kiss-gennady)
+(* offers #kiss-ruslan)
+
+#ask-irina
+(label *)	You asked Irina to the dance.
+(disp *)	No boy could ever matter more to you than your dearest
+		friend, Irina, so it didn't seem fair to accept Ruslan's
+		invitation when Irina was clearly interested in him, too.
+		So you invited Irina to go together, instead of accepting
+		a boy's invitation.
+		(par)
+		Irina looked stunning in her ball gown, and the two of you
+		spent the band's first set giggling over the other couples
+		and occasionally dancing with each other or with some cute
+		boy. Ruslan, of course, was as handsome in his finery as
+		you both expected. So was Prince Huseyin, the boy who your
+		father had wanted you to come with.
+		(increase compassion by 1)
+(* offers #kiss-huseyin)
+(* offers #kiss-ruslan)
+(* offers #kiss-irina)
+
+#kiss-oleg
+(label *)	You kissed Oleg.
+(disp *)	You danced for hours with Oleg, and at the end of a magical
+      		night, you shared your first kiss. Over the years afterward,
+		you discovered that you already loved each other, and that
+		love kept growing.
+		(now) (#anya is married to #olga)
+		(now) (#olga is married to #anya)
+(* flows to #end-of-ball)
+
+#kiss-huseyin
+(label *)	You kissed Huseyin.
+(disp *)	After the dancing, you and Huseyin sat for hours on the
+      		verandah, and confided in each other. At the end of the
+		evening, you shared your first kiss, and your relationship
+		blossomed from there.
+		(now) (#anya is married to #huseyin)
+		(now) (#huseyin is married to #anya)
+(* flows to #end-of-ball)
+
+#kiss-ruslan
+(label *)	You kissed Ruslan.
+(disp *)	(if) (#accept-genady is exposed) (then)
+            		Ruslan's lips were just as sweet as you had dreamed...
+			and as you were kissing him, a small voice in your
+			head chided you for being the worst friend ever for
+			stealing poor Irina's date. The voice faded quickly,
+			as passion swelled between the two of you.
+			(now) ~(#irina trusts $)
+		(else)
+			Irina saw looking longingly at Ruslan. She gave
+			you a little push in Ruslan's direction, and a
+			a significant look. That was all the hint you
+			needed. Ruslan's lips were every bit as sweet as you
+			had dreamed, and love between you grews for years
+			afterward.
+		(endif)
+		(now) (#anya is married to #ruslan)
+		(now) (#ruslan is married to #anya)
+		(now) ~(#irina is married to $)
+(* flows to #end-of-ball)
+
+#kiss-gennady
+(label *)	You kissed Gennady.
+(disp *)	Millie was furious at you for "stealing" her "boyfriend,"
+      		but there never had been anything between those two. From
+		the ardour with which he kissed you, there must have been
+		something on Gennady's end that you had never noticed before
+		he asked you to the ball. That was enough to build the
+		foundations of the relationship that came afterward.
+		(now) (#anya is married to #gennady)
+		(now) (#gennady is married to #anya)
+		(now) ~(#millie is married to $)
+		(now) ~(#millie trusts $)
+		(now) (#millie trusts #pyotr)
+(* flows to #end-of-ball)
+
+#kiss-irina
+(label *)	You kissed Irina.
+(disp *)	You led Irina away from the dance, to the most secluded part
+      		of the gardens you could find, and kissed her. After a moment
+		of stiff surprise, she kissed you back. From that moment on,
+		the two of you became imseparable, even if you had to keep
+		the romance between you furtive and secret because of your
+		father.
+      		(now) (#anya is married to #irina)
+		(now) (#irina is married to #anya)
+		(now) ~(#irina is married to $)
+		(now) ~(#ruslan is married to $)
+(* flows to #end-of-ball)
+
+#end-of-ball
+(disp *)	(next scene)
+(* flows to #wander-palace)
+
+%% -------------------- Scene 3: University --------------------
+
+#remember-university
+(label *)	Remember when you were choosing which university to attend.
+(disp *)	Which university did you wind up choosing?
+(* offers #choose-academy)
+(* offers #choose-sorbonne)
+(* offers #choose-georgetown)
+(* offers #choose-aiu)
+
+#choose-sorbonne
+(label *)	The Sorbonne
+(disp *)	You chose to major in Art History at the Sorbonne, in the
+      		European continent on Earth. This prepared you very well
+		for your duties as a member of the Imperial Family.
+		(now) (#anya profession #royal)
+		(now) (#anya skill 1)
+		(increase compassion by 1)
+		(increase popularity by 1)
+		(decrease fitness by 1)
+		(decrease will by 1)
+		(increase status by 1)
+		(decrease respect by 1)
+(* flows to #end-of-university)
+
+#choose-academy
+(label *)	The Imperial Academy
+(disp *)	You chose to enter the Imperial Academy and pursue a
+      		military career, just like your father. This delighted
+		him to no end.
+		(now) (#anya profession #military)
+		(now) (#anya skill 1)
+		(increase fitness by 1)
+		(increase will by 1)
+		(decrease compassion by 1)
+		(increase status by 1)
+		(increase respect by 2)
+(* flows to #end-of-university)
+
+#choose-georgetown
+(label *)	Georgetown School of Foreign Service
+(disp *)	You chose to major in Interstellar Administration at the
+      		Georgetown University School of Foreign Service, on Earth.
+		This prepared you for a career in the civilian administration
+		of the Empire.
+		(now) (#anya profession #diplomat)
+		(now) (#anya skill 1)
+		(increase will by 1)
+		(increase popularity by 1)
+		(decrease compassion by 1)
+		(increase status by 1)
+		(increase respect by 1)
+(* flows to #end-of-university)
+
+#choose-aiu
+(label *)	Al-Ijithad University
+(disp *)	You went to university outside the borders of the Empire,
+      		and majored in Humanoid Biology at al-Ijithad University
+		in the DAI. From there, you attended Harvard Medical School
+		on Earth, and became a respected trauma surgeon.
+		(par)
+		(now) (#anya profession #doctor)
+		(now) (#anya skill 1)
+		(increase compassion by 1)
+		(increase will by 1)
+		(decrease popularity by 1)
+		(if) (#anya is married to #huseyin) (then)
+		     Spending time in the DAI made Huseyin's courtship of
+		     you go very smoothly, culminating in a lavish Imperial
+		     Wedding uniting the two human superpowers.
+		     (now) (marriage status is #happy)
+		(else)
+		     Your father was furious, both for your pursuit of a
+		     profession not considered suitable for someone of your
+		     station, and for leaving the Empire while you were at
+		     a marriageable age.
+		     (decrease status by 1)
+		     (increase respect by 1)
+		(endif)
+(* flows to #end-of-university)
+
+#end-of-university
+(disp *)	(next scene)
+(* flows to #wander-palace)
+
+%% -------------------- Scene 4: Marriage trouble --------------------
+
+#remember-marriage
+(label *)	Remember the rough patch you encountered in your marriage.
+(* flows to #happy-marriage)	     (marriage status is #happy)
+(* flows to #irina-comes-out)	     (#anya is married to #irina)
+(* flows to #olga-transitions)	     (#anya is married to #olga)
+(* flows to #gennady-affair)	     (#anya is married to #gennady)
+(* flows to #ruslan-too-common)	     (#anya is married to #ruslan)
+(* flows to #huseyin-power-struggle) (#anya is married to #huseyin)
+(* flows to #end-of-remember-marriage)
+
+#irina-comes-out
+(label *)	Life in the Closet
+(disp *)	NOT WRITTEN YET
+(* offers #anya-comes-out)
+(* offers #still-closeted)
+(* offers #divorce)
+
+#olga-transitions
+(label *)	Olga Transitions
+(disp *)	NOT WRITTEN YET
+(* offers #stay-with-olga)
+(* offers #olga-just-friends)
+(* offers #reject-olga)
+
+#gennady-affair
+(label *)	Gennady is Unfaithful
+(disp *)	NOT WRITTEN YET
+(* offers #forgive-gennady)
+(* offers #stay-with-gennady)
+(* offers #divorce)
+
+#forgive-gennady
+(label *)	Forgive Gennady
+(disp *)	NOT WRITTEN YET
+      		(decrease will by 1)
+(* flows to #end-of-remember-marriage)
+
+#stay-with-gennady
+(label *)	Stay With Gennady
+(disp *)	NOT WRITTEN YET
+      		(now) (marriage status is #strained)
+(* flows to #end-of-remember-marriage)
+
+#ruslan-too-common
+(label *)	Ruslan is Beneath Your Station
+(disp *)	NOT WRITTEN YET
+(* offers #elope-with-ruslan)
+(* offers #divorce)
+
+#huseyin-power-struggle
+(label *)	Culture Clash
+(disp *)	NOT WRITTEN YET
+(* offers #convert-to-islam)
+(* offers #huseyin-tension)
+(* offers #divorce)
+
+(break up)	(now) (marriage status is #broken)
+		(if) (#anya is married to #gennady) (then)
+		     (now) (#gennady hates #anya)
+		(endif)
+
+#separation
+(label *)	Leave (spouse name)
+(disp *)	NOT WRITTEN YET
+      		(break up)
+(* flows to #end-of-remember-marriage)
+
+#divorce
+(label *)	Divorce (spouse name)
+(disp *)	NOT WRITTEN YET
+      		(break up)
+       		(#anya is married to $Spouse)
+      		(now) (#anya is married to #undefined)
+		(now) ($Spouse is married to #undefined)
+		(exes $Exes)
+		(append $Exes $Spouse $E)
+		(now) (exes $E)
+		(if) (#millie is married to #undefined)
+		     (#gennady is married to #undefined)
+		(then)
+		     (par)
+		     Within a year of your divorce becoming final, Gennady
+		     moved on to your sister Ludmilla. Their romance sparked
+		     an even bigger controversy in the gossip media than
+		     your divorce did, but that didn't stop their eventual
+		     wedding from being the biggest story of the year.
+		     (now) (#millie is married to #gennady)
+		     (now) (#gennady is married to #millie)
+		(endif)
+(* offers #second-chance-at-love)
+(* offers #lean-in-to-career)
+
+#second-chance-at-love
+(label *)	Open Yourself to New Love
+(disp *)	NOT ENVISIONED YET
+(* flows to #end-of-remember-marriage)
+
+#lean-in-to-career
+(label *)	Focus on Your Career
+(disp *)	NOT WRITTEN YET
+      		(increase skill by 1)
+(* flows to #end-of-remember-marriage)
+
+#happy-marriage
+(label *)	You and (spouse name) have been very happy in your marriage
+       		for many years now. That's rare for an Imperial Family
+		member, and you appreciate it for the blessing it is.
+(* flows to #end-of-remember-marriage)
+
+#end-of-remember-marriage
+(disp *)	(next scene)
+(* flows to #wander-palace)
+
+%% -------------------- Scene 5: In Court --------------------
+
+#go-to-court
+(label *)	Get dressed and go to court.
+(disp *)	You return to your quarters, change into your finery, and
+		go to court for Father's announcement.
+      		(next scene)
+		(par) (summarize #anya)
+		(game over { END OF SIMULATION })
+		
+%% -------------------- Scene 6: Ball --------------------
+
+%% -------------------- Scene 7: Thalberg's Offer --------------------
+
+%% -------------------- Scene 8: Coup --------------------
+
+%% -------------------- Scene 9: Denouement --------------------
+
+%% -------------------- MODULE B: Pyotr --------------------
+

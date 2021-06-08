@@ -1,0 +1,785 @@
++------------+
+|  MODULE A  |
++------------+
+
+Initial state: 
+  Ac 1, sc 1, rp 0 (range: -2 to 1)
+  N 1/-1, L 1, P 1, S 0, V -1, O 1, I 1, R 0, G 0
+  all transient flags cleared, all transients uninitialized
+  more TBD....
+
+(Capitalized properties are persistent, lower case ones are transient.)
+
++---+
+| 1 |
++---+
+
+You've just arrived at the palace, summoned by Daddy's message that there
+would be a Big Announcement of Galactic Significance on the morrow.  You
+haven't been back to the palace since it was last renovated five years ago.
+Your spouse arrived before you.
+
+> GO TO QUARTERS
+	goto -2-
+> VISIT IRINA
+	goto -3-
+> VISIT LUDMILLA
+	goto -4-
+> VISIT PYOTR
+	goto -5-
+> VISIT ALEKSANDR
+	goto -6-
+> VISIT VASILY
+	goto -7-
+> VISIT PARENTS
+	goto -8-
+> WANDER AROUND AIMLESSLY
+	goto -9-
+
++---+
+| 2 |
++---+
+
+If !fa, then mark this number to return to, and play -14-.
+
+If Spo=x or Sp=-2, goto -13-.
+
+If Sp1, goto -10-.
+
+If Sp0, goto -11-.
+
+If Sp-1, goto -12-.
+
++---+
+| 3 |
++---+
+
+Irina is (or at least was) your best friend; if she's the first person you 
+intentionally came to see, then rp+.
+
+Seeing Irina brings back memories of that big dance twenty years ago.
+If !fa, then mark this number for return and play -14-.  Otherwise,
+if !ai, mark this number for return and play -62-.
+
+The rest of this vignette is not implemented yet.  Go back to -1-.
+
++---+
+| 4 |
++---+
+
+Millie is (or at least was) your favourite sister; if she's the first person 
+you intentionally came to see, then rp+.
+
+Seeing Ludmilla brings back memories of that big dance twenty years ago.
+If !fa, then mark this number for return and play -14-.
+
+The rest of this vignette is not implemented yet.  Go back to -1-.
+
++---+
+| 5 |
++---+
+
+This vignette is not implemented yet.  Go back to -1-.
+
++---+
+| 6 |
++---+
+
+This vignette is not implemented yet.  Go back to -1-.
+
++---+
+| 7 |
++---+
+
+You never really got along with Vasily; if he's the first person you 
+intentionally  came to see, then rp-.
+
+The rest of this vignette is not implemented yet.  Go back to -1-.
+
++---+
+| 8 |
++---+
+
+Your father and his new wife are unavailable just now.  Go back to -1-.
+
++---+
+| 9 |
++---+
+
+You have a fine time wandering around the palace and grounds, and get
+a good feel for the layout, <foreshadowing> which might come in handy 
+in an emergency </foreshadowing>.  On your way, you might bump into
+a sibling, or wander into their quarters.  Go back to -1-.
+
++----+
+| 10 |
++----+
+
+Not implemented yet; goto -13-.
+
++----+
+| 11 |
++----+
+
+Not implemented yet; goto -13-.
+
++----+
+| 12 |
++----+
+
+Not implemented yet; goto -13-.
+
++----+
+| 13 |
++----+
+
+sc+
+
+The family gathers for a reception to 
+
+[UNFINISHED]
+
++----+
+| 14 |
++----+
+
+If fa, then you've been here already; go back to the vignette that sent
+you here.  If not, then set fa.
+
+Twenty years ago, you and your siblings attended the Imperial Academy 
+Gymnasium.  Your best friend was Irina, and the two of you were close to 
+the "ORG" trio of Oleg, Ruslan, and Gennady.  Your sister Millie had a 
+crush on Gennady, who was attracted to Irina, and you and Irina both 
+thought that Ruslan, the son of a knight, was utterly gorgeous.  Ruslan 
+and Gennady both asked you to the dance.
+
+> ACCEPT RUSLAN'S INVITATION
+	da=R, goto -15-
+> ACCEPT GENNADY'S INVITATION
+	da=G, goto -16-
+> ASK OLEG TO THE DANCE
+	da=O, goto -17-
+> GO WITH IRINA
+	da=I, goto -18-
+> SKIP THE DANCE
+	goto -19-
+
++----+
+| 15 |
++----+
+
+Ruslan is thrilled.  That evening, your father asks you to go to the dance 
+with Prince Huseyin, son of the Khalifat of the Dar al-Islam.
+
+> GO WITH RUSLAN
+	goto -20-
+> GO WITH HUSEYIN
+	goto -21-
+
++----+
+| 16 |
++----+
+
+Gennady is thrilled.  That evening, your father asks you to go to the 
+dance with Prince Huseyin, son of the Khalifat of the Dar al-Islam.
+
+> GO WITH GENNADY
+	goto -23-
+> GO WITH HUSEYIN
+	goto -22-
+
++----+
+| 17 |
++----+
+
+Oleg is over the moon with joy (O+).
+
+That evening, your father asks you to go to the dance with Prince Huseyin,
+son of the Khalifat of the Dar al-Islam.
+
+> GO WITH OLEG
+	goto -24-
+> GO WITH HUSEYIN
+	goto -25-
+
++----+
+| 18 |
++----+
+
+How do you mean?
+
+> GO AS FRIENDS AND EACH DANCE WITH RUSLAN
+	goto -26-
+> MAKE A PASS AT IRINA
+	goto -27-
+
++----+
+| 19 |
++----+
+
+You really want to go to the dance, and you've been looking forward to
+it for some time.
+
+rp-, goto -14-
+
++----+
+| 20 |
++----+
+
+Nikolai is furious.  Ruslan is the son of a knight, unsuitable for a
+princess like you!  And how dare you defy him in such an important 
+matter!  This touches on matters of interstellar relations, and could
+affect the lives of billions.
+
+> RELENT
+	goto -21-
+> GO WITH RUSLAN ANYWAY
+	goto -28-
+
++----+
+| 21 |
++----+
+
+Ruslan is disappointed.  He thought there was genuine attraction between
+the two of you.
+
+> EXPLAIN ABOUT DUTY AND TRY TO MAKE A DATE FOR LATER
+	goto -29-
+> SUGGEST THAT HE GO WITH IRINA
+	goto -30-
+> ARRANGE TO GO WITH HUSEYIN BUT LEAVE WITH RUSLAN
+	goto -45-
+> CHANGE YOUR MIND AND GO WITH HIM AFTER ALL
+	Wil-, Res-, goto -28-
+
++----+
+| 22 |
++----+
+
+Gennady takes the news with just a bit too much equanimity.  He mentions
+that he's heard good things about Huseyin, and is excited about meeting
+him.  He also offhandedly inquires whether you know if Irina has a date
+or not....
+
+> TRY TO SET UP GENNADY WITH IRINA
+	goto -31-
+> TRY TO SET UP GENNADY WITH LUDMILLA
+	goto -32-
+> ACCUSE GENNADY OF BEING A WEASEL
+	goto -33-
+> ACCUSE GENNADY OF MACKING ON YOUR DATE
+	goto -34-
+
++----+
+| 23 |
++----+
+
+Your father is very upset.  Gennady is a promising young man from a
+good family, but this touches on matters of interstellar relations, and 
+could affect the lives of billions.  And how dare you defy your father!
+
+> RELENT
+	goto -22-
+> GO WITH GENNADY ANYWAY
+	goto -35-
+
++----+
+| 24 |
++----+
+
+Your father is very upset.  Oleg is a very suitable match, but as a 
+princess you have a duty to the Empire, as this could affect the lives 
+of billions.  And how dare you defy your father!
+
+> RELENT
+	goto -25-
+> GO WITH OLEG ANYWAY
+	goto -36-
+
++----+
+| 25 |
++----+
+
+Oleg is crushed.  He knew you didn't mean it anyway, and what would 
+girls see in him anyway?
+
+> TRY TO FIND OLEG ANOTHER DATE
+	goto -37-
+> EXPLAIN ABOUT DUTY, THEN GO ON A PITY DATE AFTERWARDS
+	goto -38-
+
++----+
+| 26 |
++----+
+
+Irina is really touched to have such a good friend that you aren't willing
+to let a boy come between the two of you (I+).  However, that evening, your
+father asks you to go with Prince Huseyin of the DAI instead, for reasons
+of state.
+
+> GO WITH HUSEYIN
+	goto -30-
+> USE RUSLAN AS AN EXCUSE
+	goto -39-
+
++----+
+| 27 |
++----+
+
+Irina is surprised.  She had always assumed that because your father was
+behind the Empire's crusade to squash same-sex relationships, you were too.
+
+> KISS IRINA
+	goto -40-
+> GIGGLE AND MAKE A JOKE OF IT
+	goto -26-
+
++----+
+| 28 |
++----+
+
+Your father rages at you some more, grounds you for a month (N-/-), and
+forbids you to associate further with Ruslan.  He dragoons Millie into 
+going with Huseyin instead, forcing her to break her date with Gennady.  
+Perhaps one day she might possibly forgive you (L-).
+
+> MOPE
+	goto -51-
+> SNEAK OUT OF THE CASTLE
+	set da=R and goto -52-
+
++----+
+| 29 |
++----+
+
+"Sure, that would be great," he says.  The next day, you learn that he's
+going to the dance with Irina.
+
+R-, set da=H, ida=R, lda=G, ri=O, and goto -42-.
+
++----+
+| 30 |
++----+
+
+Ruslan and Irina make a handsome couple, and Irina is glad to have such
+a good friend (I+).
+
+Set da=H, ida=R, lda=G, ri=O, and goto -42-.
+
++----+
+| 31 |
++----+
+
+Irina had been hoping that Ruslan would ask her to the dance, but she 
+hasn't heard anything.  She asks you for advice.
+
+> SET HER UP WITH GENNADY
+	goto -58-
+> TELL HER TO WAIT FOR RUSLAN
+	goto -59-
+
++----+
+| 32 |
++----+
+
+Gennady confides that he's thinking of asking Irina instead, but drops
+the subject when you bring up the possibility of going with Ludmilla.
+Millie is very excited, and glad to have such a thoughtful sister (M+).
+
+Set da=H, ida=R, lda=G, ri=O, and goto -42-.
+
++----+
+| 33 |
++----+
+
+Gennady does a slow burn, then blows up and storms out in a fit (G-).  
+The next day at school, he asks Irina to the dance, and blows up at her 
+when she turns him down flat, having already accepted an invitation
+from Ruslan.  The night before the dance, Millie excitedly tells you
+that he's invited her.
+
+Set da=H, ida=R, lda=G, ri=O, and goto -42-.
+
++----+
+| 34 |
++----+
+
+Gennady turns an interesting shade of pink, stammers, and hastily 
+inquires about your sister, who just happens to be wandering past, and
+joyfully accepts the not-actually-offered invitation.
+
+Set da=H, ida=R, lda=G, ri=G, and goto -42-.
+
++----+
+| 35 |
++----+
+
+Your father is upset with you (N-/x), but since Ludmilla is free that
+night, he sends her to the dance with Huseyin in your place, and the
+storm blows over.
+
+Set da=G, ida=R, lda=H, ri=O, and goto -42-.
+
++----+
+| 36 |
++----+
+
+Your father rages at you some more (N-/x), but because Oleg comes from such
+a suitable family, he eventually gives in and dragoons Millie into going 
+with Huseyin instead.  Perhaps one day she might possibly forgive you for 
+having to break her date with Gennady.... (L-)
+
+Set da=O, ida=R, lda=H, or, ri=G, and goto -42-.
+
++----+
+| 37 |
++----+
+
+Millie and Irina both already have dates, and by the time you talk to most 
+of your other friends, they do too.
+
+O-; set da=H, ida=R, lda=G, ri=O, and goto -42-.
+
++----+
+| 38 |
++----+
+
+Oleg's mood brightens considerably.  He understands all about noble family
+obligations, and is glad to set a date for the following weekend instead.
+He asks you to save him a dance.
+
+Set da=H, ida=R, lda=G, ri=O, and goto -42-.
+
++----+
+| 39 |
++----+
+
+Nikolai is furious.  Ruslan is the son of a knight, unsuitable for a
+princess like you!  And how dare you defy him in such an important 
+matter!  This touches on matters of interstellar relations, and could
+affect the lives of billions.
+
+> RELENT
+	goto -30-
+> STICK WITH THE RUSE
+	goto -28-
+
++----+
+| 40 |
++----+
+
+Irina leans into your kiss passionately (set ir).  She had had a huge crush 
+on you a couple of years ago, but had let it develop into a friendship because
+she thought she had no chance with you.  You spend some time making up 
+for lost time.
+
+That evening, your father asks you to go to the dance with Huseyin Ozturk,
+son of the Khalifat of the DAI.
+
+> TELL NIKOLAI ABOUT IRINA
+	goto -41-
+> AGREE TO GO WITH HUSEYIN
+	goto -43-
+
++----+
+| 41 |
++----+
+
+You steel yourself to tell your father, finally work up the courage, and
+he laughs at you.  "I know you're not enthusiastic about having your date
+picked for you, but it's time that you faced up to your responsibilities
+as a Princess of the Empire.  This is very important; would you do it for
+me?"
+
+> BACK DOWN
+	goto -43-
+> FETCH IRINA AND SNOG HER IN FRONT OF NIKOLAI
+	goto -44-
+
++----+
+| 42 |
++----+
+
+The night of the dance finally arrives.  You and $da make a handsome 
+couple.  You've just arrived.  Before you get to the dance floor, $ri
+asks you for a dance.
+
+Set dar=1, rir=0, daj=0, rij=1 (all -1 to 2).
+
+> ACCEPT THE OFFER
+	goto -46-
+> DANCE WITH YOUR PARTNER INSTEAD
+	goto -47-
+> RESERVE HIM A LATER DANCE, THEN DANCE WITH YOUR PARTNER
+	goto -48-
+
++----+
+| 43 |
++----+
+
+Dejectedly, you tell Irina that you're going to the dance with Huseyin,
+at your father's orders.  She wants to know whether that means that the
+two of you are off....
+
+> ARRANGE TO GET TOGETHER AFTER THE DANCE
+	goto -50-
+> BE EVASIVE
+	goto -49-
+> TELL HER THAT YOU CAN'T HANDLE A RELATIONSHIP WITH ANOTHER GIRL
+	goto -49-
+
++----+
+| 44 |
++----+
+
+When Nikolai finally wraps his head around the fact that you're really
+serious about dating another girl, he promptly grounds you (N-/+) until
+ after the dance.  He banishes Irina from the castle, and orders you not 
+to see her again.
+
+> SNEAK OUT OF THE CASTLE
+	set da=I and goto -52-
+> MOPE
+	goto -51-
+
++----+
+| 45 |
++----+
+
+You explain to Ruslan that your father is forcing you to *go* with Huseyin,
+but that doesn't mean that you have to *leave* with him, or even spend most
+of the night dancing with him.
+
+Set da=H, ida=x, lda=G, ri=R, and goto -42-.
+
++----+
+| 46 |
++----+
+
+rir+, dar-, daj+
+
+If you're here with Huseyin, set boh.
+
+
+
+Afterwards, goto -60-.
+
++----+
+| 47 |
++----+
+
+dar+, rij+
+
+
+
+Afterwards, goto -60-.
+
++----+
+| 48 |
++----+
+
+rir+, dar+, daj+
+
+
+
+Afterwards, goto -60-.
+
++----+
+| 49 |
++----+
+
+Irina is disapponted.  She believes in the two of you, and wishes that
+you would, too.  The two of you have a huge fight, and don't speak for
+a couple of days.  Eventually, the night of the dance arrives....
+
+I-, set ir, da=H, ida=R, lda=G, oda=x, ri=I
+
++----+
+| 50 |
++----+
+
+You kiss again to seal the pact, and spend an inordinate amount of time
+"studying together" over the intervening week.
+
+Set ir, da=H, ida=A, lda=G, oda=x, ri=I
+
++----+
+| 51 |
++----+
+
+While you're stuck at home, Oleg drops by to try to cheer you up.  It
+becomes obvious during your conversation that he's carrying a torch for
+you.
+
+> KISS OLEG
+	goto -55-
+> DODGE OLEG'S ADVANCES
+	goto -56-
+
++----+
+| 52 |
++----+
+
+In the real game, there'll be a minigame for trying to sneak out.  In the
+paper prototype, flip a coin and try to call it successfully in the air.
+
+If you succeeded, you snuck out of the palace to meet $da.  Goto -53-.
+
+If you failed, you were caught in the attempt.  Goto -54-.
+
+If you'd rather not risk being caught, goto -51-.
+
++----+
+| 53 |
++----+
+
+You spend a wild night of passion together, and pledge your undying love.
+
+Set Spo=da, sp=1.
+
+The flashback ends; go back to the number that you saved.
+
++----+
+| 54 |
++----+
+
+Nikolai won't even speak to you after you are caught.  Instead, he has $da
+dismissed from the Gymnasium and sent away from court.  He also has your
+communications monitored.  You eventually learn which university your 
+paramour intends to attend, but don't see them again until after graduation.
+
+Goto -57-.
+
++----+
+| 55 |
++----+
+
+You quickly become a fast couple, and missing the dance doesn't seem so
+bad.  When it becomes apparent that you two are an item, Nikolai approves,
+as Oleg's father is an old war buddy of his.
+
+Set Spo=O, sp=1.
+
+The flashback ends; go back to the number that you saved.
+
++----+
+| 56 |
++----+
+
+Oleg is a good friend, but you don't think of him That Way.  You remain
+good friends, however.
+
+Goto -57-.
+
++----+
+| 57 |
++----+
+
+For reasons of state, your father arranges an engagement between you and
+Huseyin.  You are to be given until both of you graduate from university
+to get to know each other, at which time a Royal Wedding will be scheduled.
+
+Set Spo=H, sp=0, am.
+
+The flashback ends; go back to the number that you saved.
+
++----+
+| 58 |
++----+
+
+Gennady is grateful to you for setting 
+
+G+, set da=H, ida=G, lda=x, ri=R, and goto -42-.
+
++----+
+| 59 |
++----+
+
+Irina's patience pays off.  Ruslan asks her to the dance, and she glad
+to have such a good friend, both for the advice
+
+I+, set da=H, ida=R, lda=G, ri=R, and goto -42-.
+
++----+
+| 60 |
++----+
+
+The dance is full of 
+
+> SLOW DANCE WITH $da
+	goto -61-
+> SLOW DANCE WITH $ri
+	goto -62-
+> CHAT WITH IRINA
+	goto -63-
+> CHAT WITH MILLIE
+	goto -64-
+> GO TO THE LADIES' ROOM
+	goto -65-
+> GO TO THE PUNCH BOWL
+	goto -66-
+> GO OUTSIDE WITH $da
+	goto -67-
+> GO OUTSIDE WITH $ri
+	goto -68-
+
++----+
+| 61 |
++----+
+
+If dar < 0, your date is upset with you.  Go back to -60-.
+
+Otherwise, dar+, rij+, goto -60-.
+
++----+
+| 62 |
++----+
+
+If rir < 0, then $ri isn't interested in dancing right now.  Go back to -60-.
+
+If daj > 2, then $da tries to cut in.
+
+> OBJECT
+> 
+
+Otherwise, rir+, daj+, dar-, goto -60-.
+
++----+
+| 63 |
++----+
+
++----+
+| 64 |
++----+
+
++----+
+| 65 |
++----+
+
++----+
+| 66 |
++----+
+
++----+
+| 67 |
++----+
+
++----+
+| 68 |
++----+
+
+-----------------------
+
+TODO:
+  - At least one designated rival will try to get together with Anya.
+  - If Gennady and Irina aren't at the dance together, he hits on her.
+  - If Irina and Ruslan aren't at the dance together, she asks him to dance.
+  - If Anya isn't at the dance with Oleg, he asks her to dance at least once.
+  - Both Anya's date and the rival will try to get Anya alone to make out.
+
+  - Each primary character triggers a different flashback with Anya.
+  - There's more than one Anya-and-Nikolai flashback, too.
+  - There are also mandatory flashbacks to pick a major/university,
+    to deal with a complication in Anya's marriage, and at a turning
+    point in Anya's career.
+  - Does Anya get pregnant?  Does she have children?

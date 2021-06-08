@@ -1,0 +1,224 @@
+Nikolai Grozhny: An Interactive Tragedy
+
+MODULE A
+
+
+SCENE A1: Arrival (always I.i)
+
+Triggered when: the game begins.
+
+Princess Anastasia has just arrived at the Imperial Palace in Kolyagrad
+on Novy Mir.  She was summoned from off-world by her father, who has an
+important announcement to make.  That's all Anya knows.
+
+Bits and pieces of Anya's backstory filter in as Anya wanders around the
+palace.  Objects, people, and places trigger 
+
+Advance to A2 when: A1a and A1b complete.
+
+
+SUBSCENE A1a: Backstory
+
+Triggered when: the game begins.
+
+Setting: the Imperial Palace (all of it).
+
+Cast: PC (Anya)
+
+Extras: Guards
+
+Let the player wander randomly through the palace.  She's just arrived from
+off-world.  An assortment of objects and people around the palace will trigger 
+flashbacks when she REMEMBERs them, and several of these flashbacks are 
+mandatory -- if she doesn't have them by a certain point, we'll contrive to 
+make them happen, or else hold up the advancement of time until she does.  
+Anya starts as something of a blank slate -- we haven't learned her backstory, 
+after all -- and the events in the flashbacks fill in the details about her, 
+and modify her attributes, appearance, and relationships with other characters.
+
+Advance to A1b when: Anya returns to her quarters after completing AF1, and 
+she's met at least one sibling.
+
+
+SUBSCENE A1b: Preparing
+
+Triggered when: A1a complete.
+
+Setting: Anya's quarters
+
+Cast: Anya, Spouse
+
+Anya and her spouse have a conversation that reveals the state of their
+relationship (wandering off into AF2 if necessary), and Anya chooses an 
+outfit for the announcement and ball.
+
+Decisions:
+  Sp+
+  Sp=
+  Sp-
+
+Finished when: Anya finishes AF2 and dresses for the announcement.
+
+
+MANDATORY FLASHBACK AF1: Senior Ball
+
+Triggered when: 
+
+Setting: Imperial Academy, twenty-five years ago
+
+Cast: Anya, Irina, Ludmilla, Oleg, Ruslan, Gennady, Huseyin
+
+Divided into three subscenes: accepting an invitation, answering a 
+request to reconsider, and attending the ball itself.
+
+In the past (come up with a precise number of years ago), Anya attended
+the Imperial Academy Gymnasium, as all the children of the Imperial Family 
+did.  Her best friend was Irina, and the two of them were close to the 
+"ORG" trio of Oleg, Ruslan, and Gennady.  Millie had a crush on Gennady, 
+who was attracted to Irina, and Irina and Anya both thought that Ruslan, 
+the son of a knight, was utterly gorgeous.
+
+(Easter egg: Nikolai attended King's Academy in Jordan, and patterned
+IAG after it.  Somewhere on campus there are portraits of Frank Boyden,
+Eric Widmer, and the first headmaster of IAG side-by-side-by-side.)
+
+The senior ball was an extremely important moment in Anya's life to that
+point, as it affects who she later marries, and sets the tone for her
+relationships with her most closest confidantes.  Ruslan and Gennady 
+both ask her to the dance, and there's the possibility (not mentioned
+in the program text) of Anya asking Oleg or Irina (who she'll have to
+ask more than once to get her intention through).  Whichever date she 
+first tentatively sets up, her father will ask her to go with Prince 
+Huseyin of the Dar al-Islam, eldest son of the Khalifat, for "the good of 
+the Empire."  
+
+If she accepts the invitation from Ruslan, and sticks with it, she 
+pisses off Nikolai (because Ruslan is beneath her station, and he asked
+her to go with Huseyin) and Irina (because Irina wanted him).  She has
+a wonderful time at the dance with Ruslan, however.  Huseyin forever
+drops out of the picture as a potential spouse, Gennady and Millie pair
+off, and Oleg is quietly disappointed.  (N-/0, I-, Sp!=H, Lsp=G, R+)
+
+If she accepts the invitation from Gennady, and sticks with it, Ludmilla
+is angry with her
+
+If she invites Oleg, Nikolai takes 
+
+If she dumps her date to go with the prince, Nikolai is pleased with her,
+
+If she turns down Prince Huseyin to go to the ball with Irina, Nikolai
+throws an utter fit.  Oleg is supportive, 
+
+Triggered when: Anya encounters any of her possible spouses (Olga, Irina,
+Ruslan, Gennady), or Millie or Ambassador Ozsoyoglu, or REMEMBERs any of
+the above, or enters the bathroom in her quarters, or a sibling brings up
+the topic of their teenage years.
+
+Consequences: 
+  -- Go with Ruslan: 
+  -- Go with Gennady: 
+  -- Go with Oleg: 
+  -- Go with Huseyin: 
+
+SUBSCENE AF1a: Invitation
+
+SUBSCENE AF1b: Answer
+
+SUBSCENE AF1c: Ball
+
+
+MANDATORY FLASHBACK AF2: Let's Talk About Our Relationship
+
+
+SCENE A2: The Announcement (always I.ii)
+
+Triggered when: scene A1 ends.
+
+Setting: Throne Room
+
+Cast: PC (Anya), Spouse, Nikolai, Ludmilla, Pyotr
+
+Extras: Aleksandr, Vasily, Guards
+
+Everyone has been summoned to the Throne Room for Nikolai's announcement.
+Nikolai announces a comprehensive plan for galactic peace: the Empire and
+the minor powers are to join in a Galactic Federation, with Nikolai at
+the head.  The Empire is to be divided into smaller independent states
+of roughly the size of the DAI and the Public Sector, each ruled by one
+of Nikolai's children.  Nikolai calls forth his children to swear fealty
+to the new Federation and homage to Nikolai.
+
+Sander and Vasily pledge their loyalty to the Federation, and receive the
+largest and choicest portions of the Empire.  Anya has the third chance 
+to speak.  If she doesn't speak out, then Fleet Marshal Harada interrupts
+to argue that Nikolai's plan is foolish, and is banished for it.  Whatever
+happens, Pyotr stomps off in a huff, and Ludmilla pledges her undying love.
+
+Anya's territory will depend on her Nikolai relationship, and the choices
+she makes in responding to Nikolai.  She can follow Vasily and Sander's
+lead, flatter Nikolai, quote Lear at him, or chew him out for his stupid
+idea.  The latter will get her banished, as will a negative relationship.
+A zero respect, or a broken marriage without a high respect, will get Anya 
+appointed as Nikolai's assistant, without territory of her own.
+
+Anya sits between her best friend (usually Irina) and her spouse, and has
+opportunities to whisper to both during the ceremony.  Everyone files out
+at the end of the ceremony, giving Anya a limited opportunity to get a
+first reaction from others.
+
+Advance to A3 when: Anya leaves the Throne Room.
+
+
+SCENE A3: The Ball (always I.iii)
+
+Triggered when: scene A3 ends.
+
+Setting: Ballroom.
+
+Cast: Just about everybody.
+
+After the announcement, a grand ball is held.  Everyone who is anyone is at
+the ball
+
+Advance to A4 when: Anya has danced with Thalberg and at least three other
+key players.
+
+
+SCENE A4: Treason! (always I.iv)
+
+Thalberg's coup 
+
+Advance to A5 when:
+
+Advance to A6 when:
+
+Exit with result 00 when:
+
+
+SCENE A5: Aftermath (always I.v)
+
+Exit with result 01 when: 
+
+Exit with result 10 when:
+
+
+SCENE A6: Anya and Thalberg (always I.v)
+
+Exit with result 11 when: 
+
+Exit with result 00 when: Anya dies
+
+
+Mandatory Flashback AF2: College Application Rag
+
+Mandatory Flashback AF4: Teenage Anya and her father
+
+Optional Flashback AF5: Olga Transitions (NB: mandatory if spouse == Olga)
+
+Optional Flashback AF6: The death of Empress Aiko
+
+Optional Flashback AF7: Little Anya and Little Rini
+
+Optional Flashback AF8: Creepy Uncle Olaf
+
+Optional Flashback AF9: ORG Yori Dango

@@ -1,0 +1,272 @@
+Nikolai Grozny: An Interactive Tragedy in Five Acts
+
+CHARACTERS
+
+Imperial Family:
+
+Nikolai the Terrible (N)
+  Fit 1, Wil 2, Com 0, Pop 2, Ski 2 (Amb 2, Hon 2)
+[Empress Aiko, Nikolai's first wife, deceased]
+Empress Oksana, Nikolai's second wife
+  Fit -1, Wil 1, Com 0, Pop 1, Ski 2 (Amb 1, Hon 1)
+Prince Vasily, eldest son but illegitimate (V)
+  Fit 1, Wil 1, Com -1, Pop 0, Ski 1 (Amb 2, Hon 0)
+  -- Sneaky and ambitious, jealous of Sander
+Prince Aleksandr, Nikolai and Aiko's eldest child (S)
+  Fit 0, Wil 1, Com 1, Pop 1, Ski 2 (Amb 2, Hon 2)
+  -- Sander, the legitimate son, is seen as the rightful heir 
+Princess Anastasia, Nikolai and Aiko's second child (A)
+  -- The PC by default at the start of Module A
+  -- Aiko died either in childbirth or shortly after Anya was born
+  -- Personality determined by flashbacks in Act I
+Princess Ludmilla, Nikolai and Oksana's first child (L)
+  Fit -1, Wil 0, Com 2, Pop 1, Ski 0 (Amb 0, Hon 1)
+Prince Pyotr, Nikolai and Oksana's youngest child (P)
+  Fit 0, Wil 0, Com 1, Pop 2, Ski 1 (Amb -1, Hon 2)
+  -- Easygoing and a free spirit
+
+Anya's Childhood Friends:
+
+Irina (I)
+  Fit -1, Wil 0, Com 2, Pop 0, Ski 1 (Amb 0, Hon 1)
+Countess Olga nee Oleg (O)
+  Fit 1, Wil 0, Com 1, Pop -1, Ski 2 (Amb 0, Hon 2)
+Sir Ruslan (R)
+  Fit 2, Wil 0, Com 0, Pop 0, Ski 2 (Amb 1, Hon 2)
+Gennady Vorshilov (G), later Fleet Marshal, and probably married to Millie
+  Fit 1, Wil 2, Com -1, Pop 1, Ski 2 (Amb 2, Hon -1)
+Prince Huseyin Ozturk of the DAI (H)
+  Fit 0, Wil 1, Com 1, Pop 1, Ski 1 (Amb 1, Hon 1)
+
+Imperial Officials:
+
+Olaf Thalberg, Chief Marshal of the Imperial Forces
+  Fit 
+Gudrun Weinberg, Fleet Marshal, married to Sander
+  Fit 2, Wil 
+Ndiaye Harada, Fleet Marshal
+[Gennady Voroshilov, Fleet Marshal, mentioned above]
+Xiaoping Petrov, Prime Minister
+
+Other Dignitaries:
+
+Yilmaz Ozsoyoglu, DAI Ambassador
+Marno, Larano Ambassador
+V'Noran, V'Vortnu L'Gattu Ambassador
+Z'zz B!Zizzik, N!Xoren Ambassador and delegate from the L.I.W.
+Tsutomu Takahashi, Japanese Ambassador and delegate from the L.I.W.
+Subhinda Feng, Popular Entertainer
+
+
+ATTRIBUTES (64 bits)
+
+All attributes on a -1 to +2 scale.
+Definitely include:
+  Fitness
+  Compassion
+  Skill
+  Popularity
+One or two of the following:
+  Will
+  Ambition
+  Honor
+  Valor
+
+Fitness: -1 to +2 
+Will: -1 to +2 (replace with Ambition? add Valor?)
+Compassion: -1 to +2 (replace with Honor?  or *add* Honor?)
+Popularity: -1 to +2
+Skill: -1 to +2 (in chosen profession)
+
+(Possibly limit the above to at most one being +2?)
+
+Majors: Art History (at the Sorbonne), (Com+, Pop+, Fit-, Wil-, N+/-)
+        Interstellar Policy (at Georgetown SFS), (Wil+, Pop+, Com-, N+/+)
+        Humanoid Biology (at AIU), (Com+, Wil+, Pop-, N-/+)
+        Military Science (at the Imperial Academy) (Fit+, Wil+, Com-, N+/++)
+
+Spouse: Huseyin (Fit-, N+/x, Sp+ if AIU),
+        Gennady (Wil-, Nx/+, L-),
+        Irina (Wil+, N--/+, S-, Sp+ if Sorbonne),
+        Olga (Wil+, Com+, Pop-, N--/-, S-, L-, Sp-- unless GU),
+        Ruslan (Pop-, N--/-, I-, Sp- unless Academy),
+        Thalberg (Wil+, Pop--, I-, O-, S--, L--, P--, N=-3/-2),
+        Never married (Com-, N-/+),
+        Undetermined
+
+Marriage: broken, 
+          strained, 
+          happy, 
+          ended
+
+Relations with Nikolai: -3 to +3, or -4 for dead
+Respect from Nikolai: -2 to +1, modifying overall Respect attribute
+
+Relations with assorted characters: -1 to 1, or 2 for dead.
+
+Faction: Self,
+         Vasily,
+         Aleksandr,
+         Federation,
+         DAI,
+         Thalberg,
+         Neutral,
+         Undetermined
+
+FACTIONS
+
+Within the Empire:
+
+Vasily (always)
+Aleksandr (always), with Weinberg
+Thalberg, if not foiled in A or D, with 40% of the fleet
+Anya and Harada, if Anya isn't banished and doesn't leave
+Gennady, using Ludmilla and Oksana as cover, if Anya is banished or leaves
+Nikolai and the Federation, if Nikolai is roused to fight
+
+Galaxy-Wide:
+
+Empire: 3/7
+DAI: 1/7
+Larano: 1/7
+Sekkani: 1/7 (Sagittarius dwarf)
+Everyone else: 1/7
+	-- L'Gattu
+	-- N!xoren
+	-- Japanese
+	-- Minor human powers
+
+
+OUTLINE
+
+The story is divided into nine modules, A through H plus J, and a companion 
+volume, module I, which contains an unlockable encyclopaedia.  Each module 
+represents one act of the story.  The player will play five of the modules, 
+in some order.  Modules will not be visited twice during the course of the 
+game.  Each module has up to two variants and two playable characters.  At 
+the start of a module's execution, the player will be prompted to enter a 
+"result code" produced by an earlier module.  If the player doesn't enter a 
+valid code, the game will start from a position impossible to produce through 
+other play.  
+
+The game starts with Module A, with Princess Anastasia as the viewpoint 
+character.  Depending on the course of play, Anya may remain the viewpoint 
+character throughout the game, or a later act may have a different viewpoint 
+character.  It is possible to play any of Nikolai's five children or any of
+Anya's closest friends.  
+
+Each module has a number of different endings, and may also do things to a
+64-bit internal state key that is passed from module to module, which keeps
+track of what has happened thus far.  Each module has either two or three 
+valid viewpoint characters, except for A, which is always Anastasia.  Modules 
+may also have different beginnings, depending on what has gone before, and 
+alternate text depending on circumstances.  Essentially, a module encapsulates 
+a dozen or so different possible plot states, and reduces them to variations 
+on a single unifying theme.
+
+The game begins fifty years after Nikolai unified most of the galaxy under
+his rule, with a startling proposal from Nikolai: the Empire is to be
+divided among Nikolai's children, and the Empire, the DAI, and Larano space
+are to form a Galactic Confederation charged with enforcing galactic peace.
+That very night, Grand Admiral Thalberg attempts a coup.
+
+A skillful player as Anastasia will foil Thalberg's coup and 
+
+Any of Nikolai's five children may end the game on the throne, or Thalberg,
+or even Nikolai, or (more likely) the galaxy may dissolve into chaos.  Anya
+and Pyotr also have the possibility of ending up as president of a Galactic
+Federation.  Nikolai is usually the tragic figure, but that may also turn
+out to be Vasily, Anya, Aleksandr, or Vasily and Aleksandr jointly.
+
+
+
+MODULE A
+
+A: Thalberg's Coup (start of game)
+
+Nikolai summons his children to announce the formation of a Galactic
+Federation and a peace treaty.  Princess Anastasia, the PC, discovers
+a plot by Grand Admiral Thalberg to depose Nikolai and seize power
+himself.  She must foil the plot, warn the family and escape, or join
+Thalberg.
+
+Anya has some free time to wander around the palace before the court
+ceremony involving the announcement.  As she does so, she experiences a 
+series of flashbacks that fill in her backstory and set up her relationships 
+with the other main characters: friends, family, spouse, even a few political 
+figures.  The flashbacks also determine her attributes, and several mandatory 
+flashbacks regulate the passage of time.
+
+The first mandatory flashback allows time to move forward to the announcement
+ceremony, where she has an opportunity to react to the announcement and
+curry favor or piss off Nikolai.  A second mandatory flashback after the
+announcement allows time to move forward to the ball thrown in honor of the
+announcement, during which alliances begin to form, and Thalberg tries to
+recruit Anya for his plot.  A third (and possibly fourth) mandatory flashback
+ends the ball, after which Thalberg strikes.
+
+Attribute changes:
+  Too numerous to mention -- set any attribute to any value.
+
+Outcomes: (MSB set == Thalberg's faction survives)
+  000: N 1+/1+ after A5 -> B(A)
+  001: N 1+/0- after A5 -> C(A)
+  010: N 0-/0-, or married to Huseyin, after A5 -> C(O)
+  011: Anya dies at any point without raising alarm -> E(S)
+  100: Anya dies but raises the alarm -> B(P)
+  101: Imperial Family escapes from A6 -> D(A)
+  110: Res 1+ after A7 -> D'(A)
+  111: Res 0- after A7 -> C(O)
+
+
+MODULE B
+
+B: Before the Storm (Anya or Pyotr)
+
+In the wake of Thalberg's failed plot, Nikolai's partition plan goes into
+effect, with Anya (or Pyotr, if Anya died heroically unveiling Thalberg's
+plot) controlling one of the factions.  
+
+
+MODULE C
+
+C: Travels with Nikolai (Anya or Olga)
+
+
+MODULE D
+
+D: Space Combat (Anya or Ludmilla)
+D': Nest of Vipers 
+
+
+MODULE E
+
+E: Grand Strategy (Anya or Sander)
+
+
+MODULE F
+
+F: Ground Combat
+F': Showdown (Anya or Vasily)
+
+
+MODULE G
+
+G: War Torn Galaxy (Anya or Pyotr)
+G': The Madness of Nikolai
+
+
+MODULE H
+
+H: Hamlet (Anya or Irina)
+H': Agamemnon 
+
+
+MODULE I
+
+I: Encyclopaedia
+
+
+MODULE J
+J: Goetterdaemmerung
+J': Julius Caesar
